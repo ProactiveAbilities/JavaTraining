@@ -35,4 +35,5 @@
 	</bean>
 	
 	<jpa:repositories base-package="com.northwind.repository" entity-manager-factory-ref="emf"/>
+	<import resource="security.xml"/>
 </beans>
