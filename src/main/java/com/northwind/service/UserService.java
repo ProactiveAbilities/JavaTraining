@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,7 +59,6 @@ public class UserService {
 	}
 
 	public void save(User user) {
-
 		user.setEnabled(true);
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setPassword(encoder.encode(user.getPassword()));
@@ -75,5 +73,13 @@ public class UserService {
 	public User findOneWithBlogs(String name) {
 		User user = userRepository.findByName(name);
 		return findOneWithBlogs(user.getId());
+	}
+
+	public void delete(int id) {
+		userRepository.delete(id);		
+	}
+
+	public User findOne(String username) {
+		return userRepository.findByName(username); 
 	}
 }
