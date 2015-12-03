@@ -5,18 +5,14 @@
 
 	
 	<bean class="java.net.URI" id="dbUrl">
-		<constructor-arg value="#{systemEnvironment['DATABASE_URL']}" />
+	    <constructor-arg value="#{systemEnvironment['DATABASE_URL']}"/>
 	</bean>
+	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-<!-- 		<property name="url" value="#{ ' jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath()}"/> -->
-<!-- 		<property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0]}"/> -->
-<!-- 		<property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1]}"/> -->
-		<property name="url" value="#{ ' jdbc:postgresql://' + 'ec2-107-21-224-11.compute-1.amazonaws.com' + ':' + '5432' + 'dcev42p5loa7pa'}"/>
-		<property name="username" value="#{ 'xmzmkqnndjkflq'}"/>
-		<property name="password" value="#{ '6F9iOeinAf7tKMeQeYlOm6nSs9'}"/>
-		
-	</bean>
-		
+	    <property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>
+	    <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
+	    <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
+	</bean>		
 	<bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="emf">
 		<property name="packagesToScan" value="com.northwind.entity"></property>
 		<property name="dataSource" ref="dataSource"/>	
