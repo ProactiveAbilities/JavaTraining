@@ -27,11 +27,15 @@ public class ConnectToPostgreSQL {
 
 		try {
 
+//			connection = DriverManager.getConnection(
+//					"jdbc:postgresql://ec2-54-217-231-152.eu-west-1.compute.amazonaws.com:5432",
+//					"cdovxiwmdqramm",
+//					"kMl84snnPirPElWkt49Avo1PC1");
 			connection = DriverManager.getConnection(
-					"jdbc:postgresql://ec2-54-217-231-152.eu-west-1.compute.amazonaws.com:5432",
-					"cdovxiwmdqramm",
-					"kMl84snnPirPElWkt49Avo1PC1");
-			
+			"jdbc:mysql://localhost:3306",
+			"root",
+			"nsaad");
+	
 		} catch (SQLException e) {
 
 			System.out.println("Connection Failed! Check output console");
